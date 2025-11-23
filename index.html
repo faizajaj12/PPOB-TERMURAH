@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOKO PPOB STK</title>
+    <style>
+        /* VARIABLES & RESET */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* SALDO & PROFILE SECTION */
+        .profile-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .saldo-info h2 {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .saldo-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* QUICK ACTIONS */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-btn {
+            background: white;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .action-text {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* SERVICES SECTION */
+        .services-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .see-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 0.5rem;
+            background: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .service-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* PAYMENT METHODS */
+        .payment-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary);
+            background: #f8fafc;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            background: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .payment-detail {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* PROMO SECTION */
+        .promo-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .promo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-desc {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .claim-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .claim-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* BOTTOM NAVIGATION */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.75rem 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .quick-actions,
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.5rem;
+            }
+
+            .action-btn,
+            .service-item {
+                padding: 0.75rem 0.25rem;
+            }
+
+            .action-icon,
+            .service-icon {
+                font-size: 1.25rem;
+            }
+
+            .action-text,
+            .service-name {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quick-actions,
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .container {
+                padding: 0.5rem;
+            }
+
+            .profile-section,
+            .services-section,
+            .payment-section,
+            .promo-section {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <span>⚡</span>
+                <span>TOKO PPOB STK</span>
+            </div>
+            <div class="nav-icons">
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">👤</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <!-- SALDO & PROFILE -->
+        <section class="profile-section">
+            <div class="user-info">
+                <div class="avatar">ST</div>
+                <div class="saldo-info">
+                    <h2>Saldo Anda</h2>
+                    <div class="saldo-amount">Rp 1.250.000</div>
+                </div>
+            </div>
+            <button class="icon-btn">⚙️</button>
+        </section>
+
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions">
+            <button class="action-btn">
+                <div class="action-icon">📱</div>
+                <div class="action-text">Pulsa</div>
+            </button>
+            <button class="action-btn">
+                <div class="action-icon">⚡</div>
+                <div class="action-text">Listrik</div>
+            </button>
+            <button class="action-btn">
+                <div class="action-icon">💧</div>
+                <div class="action-text">PDAM</div>
+            </button>
+            <button class="action-btn">
+                <div class="action-icon">🎮</div>
+                <div class="action-text">Game</div>
+            </button>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services-section">
+            <div class="section-header">
+                <h2 class="section-title">Layanan Lainnya</h2>
+                <a href="#" class="see-all">Lihat Semua</a>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">📺</div>
+                    <div class="service-name">TV Kabel</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🚂</div>
+                    <div class="service-name">Tiket</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🏥</div>
+                    <div class="service-name">BPJS</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📊</div>
+                    <div class="service-name">Internet</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAYMENT METHODS -->
+        <section class="payment-section">
+            <div class="section-header">
+                <h2 class="section-title">Pembayaran</h2>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <div class="payment-icon">💙</div>
+                    <div class="payment-info">
+                        <div class="payment-name">DANA</div>
+                        <div class="payment-detail">083129165178 a/n ST AZIZAH</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('083129165178')">Salin</button>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-icon">💚</div>
+                    <div class="payment-info">
+                        <div class="payment-name">GOPAY</div>
+                        <div class="payment-detail">085950392510 a/n LAIN STORE</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('085950392510')">Salin</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMO SECTION -->
+        <section class="promo-section">
+            <div class="promo-banner">
+                <h3 class="promo-title">Cashback 10%</h3>
+                <p class="promo-desc">Untuk pembelian pertama menggunakan DANA</p>
+                <button class="claim-btn">Klaim Sekarang</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Laporan</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">💬</span>
+            <span>Chat</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Profil</span>
+        </a>
+    </nav>
+
+    <script>
+        // Fungsi untuk menyalin teks ke clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor berhasil disalin: ' + text);
+            }, function(err) {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+
+        // Animasi sederhana untuk button
+        document.querySelectorAll('.action-btn, .service-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
